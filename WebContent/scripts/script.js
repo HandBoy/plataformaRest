@@ -4,13 +4,9 @@ function loadData(aulaId) {
 
 	var getUrl = 'http://localhost:8080/RestWebServices/rest/aula/'+1;	
 
-	//console.log(getUrl);
-
-
 	$.getJSON(getUrl, function(data) {
 		
 		for(i=0; i< data.alunosList.length; i++ ){
-			//console.log(data.alunosList[i])
 			getSessions( data.aulaId, data.alunosList[i].id);
 		}
 	}) 
@@ -27,13 +23,16 @@ function loadData(aulaId) {
 
 function getSessions(aulaId, alunoId) {
 	var getUrl = 'http://localhost:8080/RestWebServices/rest/session/'+aulaId+"/"+alunoId;
-	console.log(getUrl);
-	$.getJSON(getUrl, function(){
-		getDadosSession();
+	$.getJSON(getUrl, function(data){
+		getDadosSession(data);
+
 	});
 
-	/*$.getJSON(getUrl, function(data) {
+}
 
+
+function getDadosSession(data){
+	
 		var fixed = 0;
 		var miss = 0;
 		var total = 10 * data.session.length;
@@ -42,7 +41,6 @@ function getSessions(aulaId, alunoId) {
 
 
 		for(i=0; i< data.session.length; i++ ){
-
 
 			if (data.session[i].fixedNumbers != undefined) {        		
 				console.log(data.session[i].missingNumbers);
@@ -60,13 +58,7 @@ function getSessions(aulaId, alunoId) {
 
 		document.getElementById("header").innerHTML= "fixed " + fixed + " missing " + miss;
 
-	});*/
-}
 
-
-function getDadosSession(){
-
-	console.log("getDadosSession sucesso");
 }
 
 
