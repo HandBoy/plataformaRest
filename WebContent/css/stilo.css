@@ -1,0 +1,90 @@
+@CHARSET "ISO-8859-1";
+
+* {	padding: 0; margin: 0; vertical-align: top; }
+
+body {
+	background: url(background.png) repeat-x;
+	font: 18px/1.5em "proxima-nova", Helvetica, Arial, sans-serif;
+}
+
+a {	color: #069; }
+
+a:hover { color: #28b; }
+
+#header {
+	position: relative;
+	width: 900px;
+	margin: auto;
+}
+
+#header h2 {
+	margin-left: 10px;
+	vertical-align: middle;
+	font-size: 42px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #000;
+}
+
+h3 {
+    margin-left: 30px;
+    font: 26px "omnes-pro",Helvetica,Arial,sans-serif;
+    color: #666;
+}
+
+
+#footer {
+	margin-top: 25px;
+	margin-bottom: 10px;
+	text-align: center;
+	font-size: 12px;
+	color: #999;
+}
+
+#center{
+  margin: 0 auto;
+  width: 80%; /* Altere para o valor da largura desejada. */    
+}
+
+td {
+  color: black;
+
+}
+
+tr {
+    width: 100%
+}
+
+
+td.erro {
+    color: #cd6060;
+}
+
+td.correto {
+    color: green;
+}
+
+th{
+   background-color: darkgray; 
+}
+
+
+#tdAluno{
+    width: 140px;
+}
+
+.percentBar{
+    float: right;
+    margin: auto 22px auto auto;
+}
+
+.individualConteiner{
+    background: linear-gradient(#f6f6f6 0px, #fff 50px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    margin: 15px auto 30px;
+    padding: 20px 15px 15px;
+    width: 850px;
+}
+
