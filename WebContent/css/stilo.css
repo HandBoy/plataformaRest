@@ -88,3 +88,15 @@ th{
     width: 850px;
 }
 
+
+.CorrectBar{	
+	background-color: #89d58e; 
+	float: left; 
+	height: 0.7cm;
+}
+
+.WrongBar{
+	background-color: #ea7070; float: left; height: 0.7cm; 	
+}
+}
+

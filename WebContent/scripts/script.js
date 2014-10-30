@@ -36,29 +36,61 @@ function getDadosSession(data){
 		var fixed = 0;
 		var miss = 0;
 		var total = 10 * data.session.length;
-		var corretas = total - fixed - miss;
-
-
+		
 
 		for(i=0; i< data.session.length; i++ ){
 
 			if (data.session[i].fixedNumbers != undefined) {        		
-				console.log(data.session[i].missingNumbers);
 				fixed += data.session[i].fixedNumbers.length;
 			}
 
 			if (data.session[i].missingNumbers != undefined) {        		
-				console.log(data.session[i].missingNumbers);
 				miss += data.session[i].missingNumbers.length;
 			} 
 
-			console.log("fixed " + fixed + " missing " + miss);
+			console.log("id " + data.session[i].userId +" fixed " + fixed + " missing " + miss);
 
 		} 
+		
+		var corretas = total - fixed - miss;
+		
+		var percert = Math.round((100 * corretas)/ (corretas + miss));
 
-		document.getElementById("header").innerHTML= "fixed " + fixed + " missing " + miss;
+		document.getElementById("header").innerHTML= "fixed " + fixed + " missing " + miss + " corretas " + percert;
+		
+		var table = document.getElementById("GuideTable");
+	    var row = table.insertRow(-1);
+	    var cell1 = row.insertCell(0);
+	    var cell2 = row.insertCell(1);
+	    cell1.innerHTML = '<a href="url">' + data.session[1].userId +"</a>";
+	    cell2.innerHTML += '<div class="CorrectBar"	style="width: 60%;"> <div class="percentBar"> '+ percert +'% </div></div>';
+	    cell2.innerHTML += '<div class="WrongBar" style="width: 20%;"></div>';
+	    cell2.innerHTML += '<div style="float: left; height: 0.7cm; margin-left: 15px;"> ' + data.session.length + '</div>';
+	    //cell2.style.color="red"
+	    	
+	    	
+	    	/*
+	    	 * <div class="CorrectBar"	style="width: 43%;">
+							<div class="percentBar">73%</div>
+						</div>
+						<div class="WrongBar" style="width: 16%;">
+						</div>
+						<div style="float: left; height: 0.7cm; margin-left: 15px;">30</div>
+	    	 * 
+	    	 * */
+		
+		
 
 
+}
+
+function myFunction() {
+    var table = document.getElementById("GuideTable");
+    var row = table.insertRow(-1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    cell1.innerHTML = "NEW CELL1";
+    cell2.innerHTML = "NEW CELL2";
 }
 
 
