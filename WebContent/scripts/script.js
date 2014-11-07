@@ -6,6 +6,8 @@ function loadData(aulaId) {
 
 	$.getJSON(getUrl, function(data) {
 		
+		console.log("loadData " +data.alunosList.length);
+		
 		for(i=0; i< data.alunosList.length; i++ ){
 			getSessions( data.aulaId, data.alunosList[i].id);
 		}
@@ -20,10 +22,11 @@ function loadData(aulaId) {
 }
 
 
-
+//Pega as sessões de um aluno a partir de uma aula
 function getSessions(aulaId, alunoId) {
 	var getUrl = 'http://localhost:8080/RestWebServices/rest/session/'+aulaId+"/"+alunoId;
 	$.getJSON(getUrl, function(data){
+		console.log("getSessions " +  aulaId + " " + alunoId + " JSON " + data);
 		getDadosSession(data);
 
 	});
@@ -58,39 +61,22 @@ function getDadosSession(data){
 
 		document.getElementById("header").innerHTML= "fixed " + fixed + " missing " + miss + " corretas " + percert;
 		
-		var table = document.getElementById("GuideTable");
-	    var row = table.insertRow(-1);
-	    var cell1 = row.insertCell(0);
-	    var cell2 = row.insertCell(1);
-	    cell1.innerHTML = '<a href="url">' + data.session[1].userId +"</a>";
-	    cell2.innerHTML += '<div class="CorrectBar"	style="width: 60%;"> <div class="percentBar"> '+ percert +'% </div></div>';
-	    cell2.innerHTML += '<div class="WrongBar" style="width: 20%;"></div>';
-	    cell2.innerHTML += '<div style="float: left; height: 0.7cm; margin-left: 15px;"> ' + data.session.length + '</div>';
-	    //cell2.style.color="red"
-	    	
-	    	
-	    	/*
-	    	 * <div class="CorrectBar"	style="width: 43%;">
-							<div class="percentBar">73%</div>
-						</div>
-						<div class="WrongBar" style="width: 16%;">
-						</div>
-						<div style="float: left; height: 0.7cm; margin-left: 15px;">30</div>
-	    	 * 
-	    	 * */
-		
-		
+
+    	
+		createLineUser(data.session[1].userId, percert, data.session.length);
 
 
 }
 
-function myFunction() {
-    var table = document.getElementById("GuideTable");
+function createLineUser(userId, percert, length) {
+	var table = document.getElementById("GuideTable");
     var row = table.insertRow(-1);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
-    cell1.innerHTML = "NEW CELL1";
-    cell2.innerHTML = "NEW CELL2";
+    cell1.innerHTML = '<a href="url">' + userId +"</a>";
+    cell2.innerHTML += '<div class="CorrectBar"	style="width: 60%;"> <div class="percentBar"> '+ percert +'% </div></div>';
+    cell2.innerHTML += '<div class="WrongBar" style="width: 20%;"></div>';
+    cell2.innerHTML += '<div style="float: left; height: 0.7cm; margin-left: 15px;"> ' + length + '</div>';
 }
 
 

@@ -128,7 +128,7 @@ public class SessionResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Session getSessionById(@PathParam("id") int id) {
     	Session s = sessionList.get(id);
-    	System.out.println("Returning person by id: " + s.getSessionid() + " " + s.getGameId());    	
+    	 	
     	return s;
     }
     
@@ -138,6 +138,7 @@ public class SessionResource {
     public List<Session> getSessionByPerson(@PathParam("aula_id") int aulaId, 
     		@PathParam("person_id") int personId) {
     	List<Session> sessionByPerson = new ArrayList<Session>();
+    	System.out.println("id: " + aulaId + " person " + personId);   
     	for (Session s : sessionList) {
 			if(s.getAulaId() == aulaId && s.getUserId() == personId ){				
 				sessionByPerson.add(s);				
