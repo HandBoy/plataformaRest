@@ -37,10 +37,10 @@ public class PersonResource {
  	// "simular" uma base de dados
     private Map<Integer, Person> personMap;
     
-    private Person person = new Person(1, "Jill", "Person", "jilln@jerseyrest.com"); 
-    private Person person2 = new Person(2, "Eve", "Person", "eve@jerseyrest.com"); 
-    private Person person3 = new Person(3, "Jackson", "Person", "jackson@jerseyrest.com"); 
-    private Person person4 = new Person(4, "Bill", "Person", "billn@jerseyrest.com"); 
+    private Person person = new Person(1, "Jill", "Person", "jilln@jerseyrest.com", "jill", "123"); 
+    private Person person2 = new Person(2, "Eve", "Person", "eve@jerseyrest.com", "eve", "123"); 
+    private Person person3 = new Person(3, "Jackson", "Person", "jackson@jerseyrest.com", "jackson", "123"); 
+    private Person person4 = new Person(4, "Bill", "Person", "billn@jerseyrest.com", "bill", "123"); 
     
 
 	
@@ -72,6 +72,7 @@ public class PersonResource {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String respondAsReady() {
+    	System.out.println("Demo service is ready!");
         return "Demo service is ready!";
     }
  
@@ -84,6 +85,48 @@ public class PersonResource {
          
         return person;
     }
+    
+    // 
+    @GET
+    @Path("login")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_XML)
+    public String login(@PathParam("login") String login, @PathParam("senha") String senha) {
+    	ArrayList<Person> atual = new ArrayList<Person>(personMap.values());
+    	System.out.println(login + " " + senha);
+    	for (Person person : atual) {
+			if (person.getLogin().equalsIgnoreCase(login) && person.getSenha().equalsIgnoreCase(senha)){
+				System.out.println("Login ok");
+				return "ok";
+			} 
+		}
+    	System.out.println("Login fail");
+    	return "fail";
+    }
+    
+    @POST
+    @Path("login2")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Person LoginPost(MultivaluedMap<String, String> personParams) {
+         
+        String login = personParams.getFirst("login");
+        String senha = personParams.getFirst("senha");
+
+    	ArrayList<Person> atual = new ArrayList<Person>(personMap.values());
+    	System.out.println(login + " " + senha);
+    	for (Person person : atual) {
+			if (person.getLogin().equalsIgnoreCase(login) && person.getSenha().equalsIgnoreCase(senha)){
+				System.out.println("Login ok");
+				return person;
+			} 
+		}
+    	System.out.println("Login fail");
+    	return null;
+         
+                         
+    }
+    
     
     @GET
     @Path("all")
@@ -120,7 +163,7 @@ public class PersonResource {
     @Path("{id}")
     @DELETE
     @Produces("text/plain")
-    public String removeBanda(@PathParam("id") int id) {
+    public String removePerson(@PathParam("id") int id) {
     	personMap.remove(id);
     	return "Pessoa removida. " + personMap.size();
     }
@@ -151,4 +194,5 @@ public class PersonResource {
         return p;
                          
     }
+    
 }

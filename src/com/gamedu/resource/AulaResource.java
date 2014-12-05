@@ -42,10 +42,10 @@ public class AulaResource {
     // vamos utilizar um Map estático para
  	// "simular" uma base de dados
    
-    private Person person = new Person(1, "Jill", "Person", "jilln@jerseyrest.com"); 
-    private Person person2 = new Person(2, "Eve", "Person", "eve@jerseyrest.com"); 
-    private Person person3 = new Person(3, "Jackson", "Person", "jackson@jerseyrest.com"); 
-    private Person person4 = new Person(4, "Bill", "Person", "billn@jerseyrest.com"); 
+    private Person person = new Person(1, "Jill", "Person", "jilln@jerseyrest.com", "jill", "123"); 
+    private Person person2 = new Person(2, "Eve", "Person", "eve@jerseyrest.com", "eve", "123"); 
+    private Person person3 = new Person(3, "Jackson", "Person", "jackson@jerseyrest.com", "jackson", "123"); 
+    private Person person4 = new Person(4, "Bill", "Person", "billn@jerseyrest.com", "bill", "123"); 
     
     private Aula aula;
     

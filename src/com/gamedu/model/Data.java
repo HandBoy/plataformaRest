@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Data {
 	private String objeto;
-	private String valor;
+	private String acao;
 	
 	
 			
@@ -17,7 +17,7 @@ public class Data {
 	public Data(String acerto, String erro) {
 		super();
 		this.objeto = acerto;
-		this.valor = erro;
+		this.acao = erro;
 	}
 	
 	public String getAcerto() {
@@ -27,10 +27,10 @@ public class Data {
 		this.objeto = acerto;
 	}
 	public String getErro() {
-		return valor;
+		return acao;
 	}
 	public void setErro(String erro) {
-		this.valor = erro;
+		this.acao = erro;
 	}
 	
 	
