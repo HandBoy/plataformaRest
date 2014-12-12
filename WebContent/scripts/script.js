@@ -1,4 +1,8 @@
-
+function enviarDados(data){
+	
+	console.log("enviarDados " +data);
+	
+}
 
 function loadData(aulaId) {
 
