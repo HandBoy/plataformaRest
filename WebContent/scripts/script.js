@@ -1,8 +1,13 @@
-function enviarDados(data){
-	
-	console.log("enviarDados " +data);
-	
+var dataFrame = window.data;
+
+
+dataFrame.enviarDados = function (mensagem, data) {
+    console.log("Script.JS  " + mensagem + data);
+
 }
+
+
+
 
 function loadData(aulaId) {
 

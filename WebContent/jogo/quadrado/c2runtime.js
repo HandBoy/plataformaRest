@@ -14737,10 +14737,11 @@ cr.plugins_.Plataforma = function(runtime)
 	instanceProto.drawGL = function (glw)
 	{
 	};
-	function consoleDev(data){
+	function consoleDev(mensagem, data){
 		if (typeof enviarDados == 'function') {
-			enviarDados(data);
+			enviarDados(mensagem, data);
 		} else {
+		  console.log("PlatPlugin " + mensagem + " " + data);
 		}
 	}
 	function Cnds() {};
@@ -14748,23 +14749,19 @@ cr.plugins_.Plataforma = function(runtime)
 	function Acts() {};
 	Acts.prototype.EnviarAcerto = function (data)
 	{
-		console.log("Enviando Acerto " + data);
-		consoleDev(data);
+		consoleDev("Enviando Acerto ", data);
 	};
 		Acts.prototype.EnviarErro = function (data)
 	{
-		console.log("Enviando Erro " + data);
-		consoleDev(data);
+		consoleDev("Enviando Erro ", data);
 	};
 	Acts.prototype.IniciarPartida = function (data)
 	{
-		console.log("Iniciando Partida " + this.properties[0]  + " " + data);
-		consoleDev(data);
+		consoleDev("Iniciando Partida ", data);
 	};
 		Acts.prototype.FinalizarPartida = function (data)
 	{
-		console.log("Finalizando Partida" + this.properties[0] + " " + data);
-		consoleDev(data);
+		consoleDev("Finalizando Partida", data);
 	};
 	pluginProto.acts = new Acts();
 	function Exps() {};
